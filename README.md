@@ -8,7 +8,7 @@ This README file describes the key steps in running the analysis, including link
 
 The data for the analysis has been deposited as zip files in figshare datasets.
 
-To download, verify, and unpack the dataset, run `scripts/fetch_datasets.sh`. 
+To download, verify, and unpack the dataset, run `scripts/fetch_datasets.sh`. In some cases, using `curl` to download the dataset will result in a 403 error, but failing silently when the bash script is run. Download the dataset directly using the link within the script and move the file to the `datasets` directory created by the script, comment out the `curl` line in the script and rerun.
 
 ## Setup and general notes
 
@@ -30,6 +30,6 @@ Spike waveforms were saved during spike sorting by `group-kilo-spikes`, a script
 
 ### Decoder Analysis
 
-All the decoders found in the journal article can be fit using `scripts/decode.py`. This will load the data for each cohort/subject/recording, and use cross-validation to determine the optimal PLS hyperparameter, and then do train/test splits for each motif to compute predictions from the responses to illusion-inducing stimuli. Following, run `scripts/analyse.py` to calculate the Euclidean distances between pairs of stimulus condition, as well as the Restoration Index measure used in the paper.
+All the decoders found in the journal article can be fit using `scripts/decode.py`. This will load the data for each cohort/subject/recording, and use cross-validation to determine the optimal PLS hyperparameter, and then do train/test splits for each motif to compute predictions from the responses to illusion-inducing stimuli. Following, run `scripts/analyse.py` to calculate the Euclidean distances between pairs of stimulus condition, as well as the Restoration Index measure used in the paper. For the analysis in which we calculated all pair-wise distances between each critical intervals, run `scripts/analyse-unified.py`.
 
-To recreate figures from the publication, run the corresponding figure's notebook under `notebooks`. You should run `notebooks/R-models.ipynb` first to estimate the group means.
+To recreate figures from the publication, run the corresponding figure's notebook under `notebooks`. You should run `notebooks/R-individual-models.ipynb` and `notebooks/R-unified-models.ipynb` first to estimate the group means, and generate the corresponding output files containing the estimated models used for plotting.
