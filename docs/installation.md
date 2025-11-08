@@ -16,12 +16,6 @@ venv/bin/python -m pip install virtualenv
 venv/bin/virtualenv venv
 ```
 
-If you're doing development, you should instead install the most recent versions of all the dependencies:
-
-``` shell
-venv/bin/python -m pip install -e .
-```
-
 If you want to use Jupyter Lab, you'll need to register your virtual environment with the server. Assuming you already have jupyterlab installed (as a system package or using pipx):
 
 ``` shell
